@@ -5,10 +5,10 @@ import { userDb } from '@/lib/database';
 // GET - Buscar usuário por ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const user = userDb.getById(id);
 
     if (!user) {
@@ -33,10 +33,10 @@ export async function GET(
 // PUT - Atualizar usuário
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const { name, email, password, role } = body;
 
@@ -98,10 +98,10 @@ export async function PUT(
 // DELETE - Deletar usuário
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const existingUser = userDb.getById(id);
 
     if (!existingUser) {

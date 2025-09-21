@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Layout, Card, Button, Typography, Space, message, Table, Modal, Form, Input, Select, Tag, Avatar, Tabs, Statistic } from 'antd';
-import { UserOutlined, LogoutOutlined, PlusOutlined, EditOutlined, DeleteOutlined, TeamOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, PlusOutlined, EditOutlined, DeleteOutlined, TeamOutlined, CheckCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { useApp } from '@/contexts/AppContext';
 import { useRouter } from 'next/navigation';
 import { SystemUser, UserRole } from '@/types/user';
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
     {
       title: 'Ações',
       key: 'actions',
-      render: (_: any, record: SystemUser) => (
+      render: (_: unknown, record: SystemUser) => (
         <Space>
           <Button 
             type="text" 

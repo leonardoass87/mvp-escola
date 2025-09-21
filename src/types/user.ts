@@ -25,4 +25,5 @@ export interface SystemUser {
   email: string;
   name: string;
   role: UserRole;
+  password: string;
 }

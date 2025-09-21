@@ -25,19 +25,22 @@ const initialUsers: SystemUser[] = [
     id: '1',
     email: 'admin@escola.com',
     name: 'Administrador',
-    role: 'admin'
+    role: 'admin',
+    password: 'admin123'
   },
   {
     id: '2',
     email: 'prof@escola.com',
     name: 'Professor Silva',
-    role: 'teacher'
+    role: 'teacher',
+    password: 'prof123'
   },
   {
     id: '3',
     email: 'aluno@escola.com',
     name: 'João Aluno',
-    role: 'student'
+    role: 'student',
+    password: 'aluno123'
   }
 ];
 

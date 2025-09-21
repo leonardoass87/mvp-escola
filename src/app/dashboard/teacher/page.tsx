@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Layout, Card, Button, Typography, Space, message, List, Tag, Avatar, Modal, Input, Tabs } from 'antd';
-import { CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UserOutlined, LogoutOutlined, EyeOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useApp } from '@/contexts/AppContext';
 import { useRouter } from 'next/navigation';
 import { CheckIn } from '@/types/user';
@@ -85,6 +85,7 @@ export default function TeacherDashboard() {
         <List.Item
           actions={showActions ? [
             <Button 
+              key="approve"
               type="primary" 
               size="small" 
               icon={<CheckCircleOutlined />}
@@ -93,6 +94,7 @@ export default function TeacherDashboard() {
               Aprovar
             </Button>,
             <Button 
+              key="reject"
               danger 
               size="small" 
               icon={<CloseCircleOutlined />}

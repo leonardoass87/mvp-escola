@@ -9,7 +9,6 @@ import {
   Input, 
   Form, 
   Typography, 
-  Space, 
   message,
   Divider
 } from 'antd';
@@ -30,16 +29,16 @@ interface CheckinFormValues {
 }
 
 const Dashboard: React.FC = () => {
-  const { user, checkin, logout } = useApp();
+  const { currentUser, addCheckIn, logout } = useApp();
   const router = useRouter();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!user.isLoggedIn) {
+    if (!currentUser) {
       router.push('/');
     }
-  }, [user.isLoggedIn, router]);
+  }, [currentUser, router]);
 
   const handleCheckin = async (values: CheckinFormValues) => {
     if (!values.studentName.trim()) {
@@ -50,7 +49,11 @@ const Dashboard: React.FC = () => {
     setLoading(true);
     
     try {
-      checkin(values.studentName.trim());
+      addCheckIn({
+        studentId: 'temp-id',
+        studentName: values.studentName.trim(),
+        status: 'pending'
+      });
       message.success(`Check-in realizado para ${values.studentName}!`);
       form.resetFields();
     } catch (error) {
@@ -66,7 +69,7 @@ const Dashboard: React.FC = () => {
     router.push('/');
   };
 
-  if (!user.isLoggedIn) {
+  if (!currentUser) {
     return null; // Evita flash de conteúdo antes do redirect
   }
 
@@ -95,7 +98,7 @@ const Dashboard: React.FC = () => {
         </div>
         
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Text>Olá, {user.email}</Text>
+          <Text>Olá, {currentUser.email}</Text>
           <Button 
             type="text" 
             icon={<LogoutOutlined />}
@@ -155,7 +158,7 @@ const Dashboard: React.FC = () => {
             
             <div style={{ textAlign: 'center' }}>
               <Text type="secondary">
-                Digite o nome do aluno e clique em "Registrar Check-in" para marcar presença
+                Digite o nome do aluno e clique em &quot;Registrar Check-in&quot; para marcar presença
               </Text>
             </div>
           </Card>

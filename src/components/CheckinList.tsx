@@ -5,7 +5,7 @@ import { List, Card, Typography, Empty, Avatar } from 'antd';
 import { UserOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { useApp } from '@/contexts/AppContext';
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const CheckinList: React.FC = () => {
   const { checkIns } = useApp();

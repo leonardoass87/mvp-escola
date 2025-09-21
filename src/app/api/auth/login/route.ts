@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Buscar usuário por email
-    const user = userDb.getByEmail(email);
+    const user:any = userDb.getByEmail(email);
     if (!user) {
       return NextResponse.json(
         { success: false, error: 'Credenciais inválidas' },

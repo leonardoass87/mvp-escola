@@ -73,7 +73,7 @@ export const usersApi = {
 // API de Autenticação
 export const authApi = {
   // Login
-  login: (email: string, password: string, role: UserRole): Promise<ApiResponse<any>> => {
+  login: (email: string, password: string, role: UserRole): Promise<ApiResponse<SystemUser>> => {
     return apiRequest('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password, role }),
@@ -152,7 +152,7 @@ export const validators = {
     return emailRegex.test(email);
   },
 
-  required: (value: any): boolean => {
+  required: (value: unknown): boolean => {
     return value !== null && value !== undefined && value !== '';
   },
 
@@ -161,9 +161,11 @@ export const validators = {
   },
 };
 
-export default {
+const api = {
   users: usersApi,
   auth: authApi,
   checkIns: checkInsApi,
   validators,
 };
+
+export default api;

@@ -105,12 +105,12 @@ const statements = {
 // Funções de usuário
 export const userDb = {
   getById: (id: string): SystemUser | null => {
-    const row = statements.getUserById.get(id) as any;
+    const row = statements.getUserById.get(id) as SystemUser | undefined;
     return row || null;
   },
 
   getByEmail: (email: string): SystemUser | null => {
-    const row = statements.getUserByEmail.get(email) as any;
+    const row = statements.getUserByEmail.get(email) as SystemUser | undefined;
     return row || null;
   },
 
@@ -146,7 +146,7 @@ export const userDb = {
 // Funções de check-in
 export const checkinDb = {
   getById: (id: string): CheckIn | null => {
-    const row = statements.getCheckinById.get(id) as any;
+    const row = statements.getCheckinById.get(id) as CheckIn | undefined;
     return row || null;
   },
 
